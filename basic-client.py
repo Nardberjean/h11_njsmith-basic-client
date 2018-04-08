@@ -6,7 +6,7 @@ import h11
 # Setup
 ################################################################
 
-conn = h11.Connection(our_role=h11.CLIENT)
+h11conn = h11.Connection(our_role=h11.CLIENT)
 ctx = ssl.create_default_context()
 sock = ctx.wrap_socket(socket.create_connection(("httpbin.org", 443)),
                        server_hostname="httpbin.org")
@@ -20,9 +20,8 @@ def send(event):
     print(event)
     print()
     # Pass the event through h11's state machine and encoding machinery
-    data = conn.send(event)
     # Send the resulting bytes on the wire
-    sock.sendall(data)
+    sock.sendall(h11conn.send(event))
 
 send(h11.Request(method="GET",
                  target="/get",
@@ -37,12 +36,11 @@ send(h11.EndOfMessage())
 def next_event():
     while True:
         # Check if an event is already available
-        event = conn.next_event()
+        event = h11conn.next_event()
         if event is h11.NEED_DATA:
             # Nope, so fetch some data from the socket...
-            data = sock.recv(2048)
             # ...and give it to h11 to convert back into events...
-            conn.receive_data(data)
+            h11conn.receive_data(sock.recv(2048))
             # ...and then loop around to try again.
             continue
         return event
