@@ -1,4 +1,7 @@
 language: python
 python:
-- "3.6"
+- 3.6
 script:
+- python basic-client.py
+after_script:
+- python --version
