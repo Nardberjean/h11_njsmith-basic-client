@@ -43,7 +43,7 @@ class BasicClient:
 ################################################################
 
 # with BasicClient("httpbin.org") as client:
-if true:
+if True:
     client = BasicClient("httpbin.org")
       
 ################################################################
