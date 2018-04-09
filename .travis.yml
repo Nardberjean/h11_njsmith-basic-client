@@ -3,5 +3,6 @@ python:
 - 3.6
 script:
 - python basic-client.py
+- python basic-client-class.py
 after_script:
 - python --version
