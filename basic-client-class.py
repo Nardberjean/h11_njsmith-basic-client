@@ -49,10 +49,11 @@ with BasicClient("httpbin.org") as client:
 ################################################################
 
 
-    client.send(h11.Request(method="GET",
+    request =h11.Request(method="GET",
         target="/get",
         headers=[("Host", "httpbin.org"),
-                 ("Connection", "close")]))
+                 ("Connection", "close")])
+    client.send(request)
     client.send(h11.EndOfMessage())
 
 ################################################################
