@@ -55,7 +55,7 @@ with BasicClient("httpbin.org") as client:
             ("Host", "httpbin.org"),
             ("Connection", "close")
         ]))
-    send(h11.EndOfMessage())
+    client.send(h11.EndOfMessage())
 
 ################################################################
 # Receiving the response
