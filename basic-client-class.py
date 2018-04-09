@@ -53,6 +53,7 @@ with BasicClient("httpbin.org") as client:
         target="/get",
         headers=[("Host", "httpbin.org"),
                  ("Connection", "close")])
+    print(request)
     client.send(request)
     client.send(h11.EndOfMessage())
 
