@@ -11,6 +11,9 @@ class BasicClient:
         self.sock = ctx.wrap_socket(socket.create_connection((host, port)),
             server_hostname=host)
 
+    def __enter__(self):
+        return self
+
     def __exit__(self, *exc_info):
         print("Closing socket")
         self.sock.close()
