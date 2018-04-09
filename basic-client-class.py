@@ -42,9 +42,9 @@ class BasicClient:
 # Setup
 ################################################################
 
-# with BasicClient("httpbin.org") as client:
-if True:
-    client = BasicClient("httpbin.org")
+with BasicClient("httpbin.org") as client:
+# if True:
+#     client = BasicClient("httpbin.org")
       
 ################################################################
 # Sending a request
