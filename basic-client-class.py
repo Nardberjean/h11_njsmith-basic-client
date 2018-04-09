@@ -8,8 +8,10 @@ class BasicClient:
 
     def __init__(self, host, port=443):
         ctx = ssl.create_default_context()
-        self.sock = ctx.wrap_socket(socket.create_connection((host, port)),
-            server_hostname=host)
+        self.sock = ctx.wrap_socket(
+            socket.create_connection((host, port)),
+            server_hostname=host
+        )
 
     def __enter__(self):
         return self
