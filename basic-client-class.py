@@ -45,17 +45,23 @@ class BasicClient:
 ################################################################
 
 with BasicClient("httpbin.org") as client:
-      
+
     ################################################################
     # Sending a request
     ################################################################
 
-    client.send(h11.Request(method="GET",
-        target="/get",
-        headers=[("Host", "httpbin.org"),
-                 ("Connection", "close")]))
+    client.send(
+        h11.Request(
+            method="GET",
+            target="/get",
+            headers=[
+                ("Host", "httpbin.org"),
+                ("Connection", "close")
+            ]
+        )
+    )
     client.send(h11.EndOfMessage())
-    
+
     ################################################################
     # Receiving the response
     ################################################################
