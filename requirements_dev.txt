@@ -1,0 +1,6 @@
+wheel # help install others
+pylint
+prospector
+# pyflakes
+# mypy
+mccabe # bin/python -m mccabe basic-client-class.py
