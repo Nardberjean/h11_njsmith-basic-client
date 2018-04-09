@@ -65,7 +65,7 @@ with BasicClient("httpbin.org") as client:
         print("Received event:")
         print(event)
         print()
-        if type(event) is h11.EndOfMessage:
+        if isinstance(event, h11.EndOfMessage):
             break
 
 ################################################################
