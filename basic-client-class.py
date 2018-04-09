@@ -18,7 +18,7 @@ class BasicClient:
         print("Closing socket")
         self.sock.close()
 
-    def send(event):
+    def send(self, event):
         print("Sending event:")
         print(event)
         print()
@@ -26,7 +26,7 @@ class BasicClient:
         # Send the resulting bytes on the wire
         self.sock.sendall(self.h11conn.send(event))
 
-    def next_event():
+    def next_event(self):
         while True:
             # Check if an event is already available
             event = self.h11conn.next_event()
@@ -51,6 +51,7 @@ if True:
 ################################################################
 
 
+    print(h11.EndOfMessage())
     client.send(h11.EndOfMessage())
     request =h11.Request(method="GET",
         target="/get",
