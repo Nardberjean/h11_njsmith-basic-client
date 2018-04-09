@@ -67,11 +67,11 @@ with BasicClient("httpbin.org") as client:
     ################################################################
 
     while True:
-        event = client.next_event()
+        nevent = client.next_event()
         print("Received event:")
-        print(event)
+        print(nevent)
         print()
-        if isinstance(event, h11.EndOfMessage):
+        if isinstance(nevent, h11.EndOfMessage):
             break
 
 ################################################################
