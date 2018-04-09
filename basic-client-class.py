@@ -50,14 +50,10 @@ if True:
 # Sending a request
 ################################################################
 
-
-    print(h11.EndOfMessage())
-    request =h11.Request(method="GET",
+    client.send(h11.Request(method="GET",
         target="/get",
         headers=[("Host", "httpbin.org"),
-                 ("Connection", "close")])
-    print(request)
-    client.send(request)
+                 ("Connection", "close")]))
     client.send(h11.EndOfMessage())
     
 ################################################################
