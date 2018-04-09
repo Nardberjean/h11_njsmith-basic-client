@@ -52,13 +52,13 @@ if True:
 
 
     print(h11.EndOfMessage())
-    client.send(h11.EndOfMessage())
     request =h11.Request(method="GET",
         target="/get",
         headers=[("Host", "httpbin.org"),
                  ("Connection", "close")])
     print(request)
     client.send(request)
+    client.send(h11.EndOfMessage())
     
 ################################################################
 # Receiving the response
