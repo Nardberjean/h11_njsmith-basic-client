@@ -1,8 +1,21 @@
 language: python
 python:
 - 3.6
+
+install:
+- pip install -r requirements.txt
+- pip install -r requirements_dev.txt
+
 script:
+
+- mypy --ignore-missing-imports basic-client.py
+- prospector basic-client.py
 - python basic-client.py
+
+- mypy --ignore-missing-imports basic-client-class.py
+- prospector basic-client-class.py
 - python basic-client-class.py
+
 after_script:
-- python --version
+- pylint basic-client.py
+- pylint basic-client-class.py
