@@ -6,12 +6,14 @@ class BasicClient:
     """A simple example class"""
     h11conn = h11.Connection(our_role=h11.CLIENT)
 
-    def __init__(self, host, port=443):
-        ctx = ssl.create_default_context()
-        self.sock = ctx.wrap_socket(
-            socket.create_connection((host, port)),
-            server_hostname=host
-        )
+    # def __init__(self, host, port=443):
+    #     ctx = ssl.create_default_context()
+    #     self.sock = ctx.wrap_socket(
+    #         socket.create_connection((host, port)),
+    #         server_hostname=host
+    #     )
+    def __init__(self, socket):
+        self.sock = socket
 
     def __enter__(self):
         return self
@@ -44,7 +46,10 @@ class BasicClient:
 # Setup
 ################################################################
 
-with BasicClient("httpbin.org") as client:
+with BasicClient(ssl.create_default_context().wrap_socket(
+    socket.create_connection(("httpbin.org", 443)),
+    server_hostname="httpbin.org"
+    )) as client:
 
     ################################################################
     # Sending a request
