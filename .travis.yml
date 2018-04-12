@@ -23,12 +23,10 @@ install:
 
 script:
 
-- mypy --ignore-missing-imports basic-client.py
 - mypy --follow-imports=skip basic-client.py
 - prospector basic-client.py
 - python basic-client.py
 
-- mypy --ignore-missing-imports basic-client-class.py
 - mypy --follow-imports=skip basic-client-class.py
 - prospector basic-client-class.py
 - python basic-client-class.py
