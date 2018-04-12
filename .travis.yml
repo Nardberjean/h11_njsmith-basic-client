@@ -14,12 +14,12 @@ matrix:
   - python: 3.7-dev
   - python: 3.6-dev
 
-before_install:
-- export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
-
 install:
 - pip install -r requirements.txt
 - pip install -r requirements_dev.txt
+
+before_script:
+- export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 script:
 
@@ -38,3 +38,4 @@ after_script:
 - mypy --follow-imports=silent basic-client-class.py
 - find . -name \*.py | xargs grep -l 'CLIENT'
 - printenv MYPYPATH
+- mypy --follow-imports=skip -p mypy
