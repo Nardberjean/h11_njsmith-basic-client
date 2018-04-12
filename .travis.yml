@@ -4,7 +4,8 @@ python:
 - 3.6-dev
 
 env:
-- MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+  global:
+  - MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 matrix:
   fast_finish: true
