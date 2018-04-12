@@ -3,15 +3,19 @@ python:
 - 3.6
 - 3.6-dev
 
-env:
-  global:
-  - MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+# env:
+  # global:
+  # - MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+  # python is not yet configured at this point
 
 matrix:
   fast_finish: true
   allow_failures:
   - python: 3.7-dev
   - python: 3.6-dev
+
+before_install:
+- export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 install:
 - pip install -r requirements.txt
