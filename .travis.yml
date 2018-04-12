@@ -3,6 +3,9 @@ python:
 - 3.6
 - 3.6-dev
 
+env:
+- MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+
 matrix:
   fast_finish: true
   allow_failures:
@@ -16,18 +19,19 @@ install:
 script:
 
 - mypy --ignore-missing-imports basic-client.py
-- env MYPYPATH=./lib/python3.6/site-packages python -m mypy --follow-imports=skip basic-client.py
+- mypy --follow-imports=skip basic-client.py
 - prospector basic-client.py
 - python basic-client.py
 
 - mypy --ignore-missing-imports basic-client-class.py
-- env MYPYPATH=./lib/python3.6/site-packages python -m mypy --follow-imports=skip basic-client-class.py
+- mypy --follow-imports=skip basic-client-class.py
 - prospector basic-client-class.py
 - python basic-client-class.py
 
 after_script:
 - pylint basic-client.py
 - pylint basic-client-class.py
-- env MYPYPATH=./lib/python3.6/site-packages python -m mypy --follow-imports=silent basic-client.py
-- env MYPYPATH=./lib/python3.6/site-packages python -m mypy --follow-imports=silent basic-client-class.py
+- mypy --follow-imports=silent basic-client.py
+- mypy --follow-imports=silent basic-client-class.py
 - find . -name \*.py | xargs grep -l 'CLIENT'
+- printenv MYPYPATH
