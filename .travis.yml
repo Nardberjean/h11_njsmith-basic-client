@@ -39,3 +39,6 @@ after_script:
 - find . -name \*.py | xargs grep -l 'CLIENT'
 - printenv MYPYPATH
 - mypy --follow-imports=skip -p mypy
+- unset MYPYPATH
+- printenv MYPYPATH
+- mypy --follow-imports=skip -p mypy
