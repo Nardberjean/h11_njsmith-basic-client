@@ -30,3 +30,4 @@ after_script:
 - pylint basic-client-class.py
 - env MYPYPATH=./lib/python3.6/site-packages bin/python -m mypy --follow-imports=silent basic-client.py
 - env MYPYPATH=./lib/python3.6/site-packages bin/python -m mypy --follow-imports=silent basic-client-class.py
+- find . -name \*.py | xargs grep -l 'CLIENT'
