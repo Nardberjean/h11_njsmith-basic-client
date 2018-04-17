@@ -76,6 +76,10 @@ with BasicClient(ssl.create_default_context().wrap_socket(
         print("Received event:")
         print(nevent)
         print(type(nevent))
+        if isinstance(nevent, h11.Response):
+            print('Response')
+        elif isinstance(nevent, h11.Data):
+            print('Data')
         print()
         if isinstance(nevent, h11.EndOfMessage):
             break
