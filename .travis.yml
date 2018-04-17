@@ -32,6 +32,7 @@ script:
 - python basic-client-class.py
 
 after_script:
+- ls --color $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 - pylint basic-client.py
 - pylint basic-client-class.py
 - mypy --follow-imports=silent basic-client.py
