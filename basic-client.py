@@ -23,6 +23,7 @@ def send(event):
     # Send the resulting bytes on the wire
     sock.sendall(h11conn.send(event))
 
+
 send(h11.Request(method="GET",
                  target="/get",
                  headers=[("Host", "httpbin.org"),
@@ -44,6 +45,7 @@ def next_event():
             # ...and then loop around to try again.
             continue
         return event
+
 
 while True:
     event = next_event()
