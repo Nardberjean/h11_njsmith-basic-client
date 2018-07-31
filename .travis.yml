@@ -19,8 +19,11 @@ install:
 - pip install -r requirements_dev.txt
 
 before_script:
+- command -v python
 - which python
+- command -v python3
 - which python3
+- command -v mypy
 - which mypy
 - python -c "import h11"
 # - export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
@@ -29,6 +32,8 @@ script:
 - find . -name h11\*
 - find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
+- python $(command -v mypy) --follow-imports=skip basic-client.py
+- python $(which mypy) --follow-imports=skip basic-client.py
 - mypy --follow-imports=skip basic-client.py
 - prospector basic-client.py
 - python basic-client.py
