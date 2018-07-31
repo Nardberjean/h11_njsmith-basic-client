@@ -19,6 +19,9 @@ install:
 - pip install -r requirements_dev.txt
 
 before_script:
+- which python
+- which python3
+- which mypy
 # - export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 script:
