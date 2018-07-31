@@ -22,8 +22,8 @@ before_script:
 # - export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 script:
-- find . -name h11.py
-- find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11.py
+- find . -name h11\*
+- find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
 - mypy --follow-imports=skip basic-client.py
 - prospector basic-client.py
