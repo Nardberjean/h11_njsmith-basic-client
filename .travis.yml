@@ -34,6 +34,8 @@ script:
 
 - python $(command -v mypy) --follow-imports=skip basic-client.py
 - python $(which mypy) --follow-imports=skip basic-client.py
+- python3 $(command -v mypy) --follow-imports=skip basic-client.py
+- python3 $(which mypy) --follow-imports=skip basic-client.py
 - mypy --follow-imports=skip basic-client.py
 - prospector basic-client.py
 - python basic-client.py
