@@ -22,6 +22,7 @@ before_script:
 - which python
 - which python3
 - which mypy
+- python -c "import h11"
 # - export MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 
 script:
