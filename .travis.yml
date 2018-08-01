@@ -35,6 +35,7 @@ script:
 - find . -name h11\*
 - find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
+- python -m mypy --follow-imports=skip basic-client.py
 - python $(command -v mypy) --follow-imports=skip basic-client.py
 - python $(which mypy) --follow-imports=skip basic-client.py
 - python3 $(command -v mypy) --follow-imports=skip basic-client.py
