@@ -22,7 +22,7 @@ install:
 - source venv/bin/activate
 - python -m pip install --upgrade pip setuptools wheel
 - python -m pip install -r requirements.txt
-- python -m pip install -r requirements_dev.txt
+- python -m pip install -r --no-warn-script-location requirements_dev.txt
 
 before_script:
 - command -v python
@@ -38,6 +38,8 @@ script:
 - find . -name h11\*
 - find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
+- python -m mypy --module h11
+- python -m mypy --package h11
 - python -m mypy --follow-imports=skip basic-client.py
 - python $(command -v mypy) --follow-imports=skip basic-client.py
 - python $(which mypy) --follow-imports=skip basic-client.py
