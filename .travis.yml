@@ -40,7 +40,7 @@ script:
 - find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
 - ls $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages/h11
-- env MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages/h11 python -m mypy --module h11
+- env MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages/h11 python -m mypy --package h11
 - python -m mypy --module h11
 - python -m mypy --package h11
 - python -m mypy --follow-imports=skip basic-client.py
