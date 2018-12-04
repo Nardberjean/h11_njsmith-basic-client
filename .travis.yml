@@ -53,7 +53,6 @@ script:
 - python3 $(command -v mypy) --ignore-missing-imports basic-client.py
 - python3 $(which mypy) --ignore-missing-imports basic-client.py
 - mypy --ignore-missing-imports basic-client.py
-- python -m prospector basic-client.py
 - python basic-client.py
 
 - python -m mypy --ignore-missing-imports basic-client-class.py
@@ -61,6 +60,8 @@ script:
 - python basic-client-class.py
 
 after_script:
+- python -m prospector basic-client.py
+#^ pylint.exceptions.UnknownMessageError: No such message id locally-enabled
 - ls --color $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
 - pylint basic-client.py
 - pylint basic-client-class.py
