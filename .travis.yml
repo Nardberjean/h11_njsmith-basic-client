@@ -63,7 +63,8 @@ after_script:
 - python -m prospector basic-client.py
 - python -m prospector basic-client-class.py
 #^^... pylint.exceptions.UnknownMessageError: No such message id locally-enabled
-- ls --color $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+# - ls --color $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+# Long output...
 - pylint basic-client.py
 - pylint basic-client-class.py
 - mypy --follow-imports=silent basic-client.py
