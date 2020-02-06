@@ -24,11 +24,16 @@ def send(event):
     sock.sendall(h11conn.send(event))
 
 
-send(h11.Request(method="GET",
+request = h11.Request(method="GET",
                  target="/get",
                  headers=[("Host", "httpbin.org"),
-                          ("Connection", "close")]))
-send(h11.EndOfMessage())
+                          ("Connection", "close")])
+print(request)
+send(request)
+
+eom = h11.EndOfMessage()
+print(eom)
+send(eom)
 
 ################################################################
 # Receiving the response
