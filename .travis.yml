@@ -40,7 +40,8 @@ script:
 - find . -name h11\*
 - find $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages -name h11\*
 
-- ls $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+# - ls $(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages
+# Long output...
 # - env MYPYPATH=$(python -c "import sys ; print(sys.prefix, end='')")/lib/python3.6/site-packages python -m mypy --package h11
 # /home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages is in the MYPYPATH. Please remove it.
 - python -m mypy --ignore-missing-imports --package h11 || true
